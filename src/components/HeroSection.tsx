@@ -66,7 +66,7 @@ const HeroSection = () => {
           </h1>
         </div>
 
-        <p className="hero-sub text-secondary-foreground/72 text-base md:text-lg max-w-[22rem] leading-relaxed font-light mt-2 relative z-20 text-center lg:text-right lg:self-end lg:pr-10 lg:-mt-10">
+        <p className="hero-sub text-secondary-foreground/72 text-base md:text-lg max-w-[22rem] leading-relaxed font-light mt-5 md:mt-4 relative z-20 text-center lg:text-right lg:self-end lg:pr-10 lg:-mt-10">
           50mm planar magnetic drivers. Engineered for those who refuse to compromise.
         </p>
 
@@ -105,12 +105,12 @@ const HeroSection = () => {
 
       <a
         href="#philosophy"
-        className="hero-scroll-indicator group absolute bottom-[56px] left-1/2 z-30 -translate-x-1/2 inline-flex flex-col items-center gap-2 text-muted-foreground/70 hover:text-foreground transition-colors duration-250"
+        className="hero-scroll-indicator group absolute bottom-8 md:bottom-10 lg:bottom-[56px] left-1/2 z-30 -translate-x-1/2 inline-flex flex-col items-center gap-1.5 md:gap-2 text-muted-foreground/70 hover:text-foreground transition-colors duration-250"
       >
-        <span className="relative flex h-9 w-5 items-start justify-center rounded-full border border-current/70 group-hover:border-current">
-          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-current animate-[mouse-wheel_1.6s_ease-in-out_infinite]" />
+        <span className="relative flex h-7 w-4 md:h-8 md:w-4.5 lg:h-9 lg:w-5 items-start justify-center rounded-full border border-current/70 group-hover:border-current">
+          <span className="mt-1 md:mt-1.5 h-1 w-1 md:h-1.5 md:w-1.5 rounded-full bg-current animate-[mouse-wheel_1.6s_ease-in-out_infinite]" />
         </span>
-        <span className="text-[10px] tracking-[0.28em] uppercase">Scroll</span>
+        <span className="text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.28em] uppercase">Scroll</span>
       </a>
 
       {/* Bottom fade */}
