@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Home,
   Compass,
@@ -23,6 +23,39 @@ const sections = [
 
 const Sidebar = () => {
   const [expanded, setExpanded] = useState(false);
+  const [activeSection, setActiveSection] = useState("top");
+
+  useEffect(() => {
+    const ids = sections.map((section) => section.href.replace("#", ""));
+
+    const updateActiveSection = () => {
+      const probe = window.innerHeight * 0.38;
+      let current = ids[0];
+
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) {
+          continue;
+        }
+
+        const rect = el.getBoundingClientRect();
+        if (rect.top - probe <= 0) {
+          current = id;
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
 
   return (
     <aside
@@ -42,27 +75,41 @@ const Sidebar = () => {
       />
 
       <nav className="relative z-10 flex flex-col w-full">
-        {sections.map(({ label, icon: Icon, href }) => (
-          <a
-            key={label}
-            href={href}
-            className="group flex w-full items-center rounded-xl py-2.5 px-3 text-sidebar-foreground hover:text-foreground hover:bg-sidebar-accent/60 transition-colors duration-200"
-            title={label}
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-200 group-hover:bg-black/15">
-              <Icon className="w-4 h-4 flex-shrink-0" />
-            </span>
-            <span
-              className={`text-xs tracking-[0.18em] uppercase whitespace-nowrap overflow-hidden transition-[max-width,opacity,transform] duration-350 ease-out ${
-                expanded
-                  ? "max-w-[9rem] opacity-100 translate-x-0"
-                  : "max-w-0 opacity-0 -translate-x-1"
+        {sections.map(({ label, icon: Icon, href }) => {
+          const isActive = activeSection === href.replace("#", "");
+
+          return (
+            <a
+              key={label}
+              href={href}
+              className={`group flex w-full items-center rounded-xl py-2.5 px-3 transition-colors duration-200 ${
+                isActive
+                  ? "text-foreground bg-sidebar-accent/70"
+                  : "text-sidebar-foreground hover:text-foreground hover:bg-sidebar-accent/60"
               }`}
+              title={label}
             >
-              {label}
-            </span>
-          </a>
-        ))}
+              <span
+                className={`flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-250 ${
+                  isActive
+                    ? "bg-primary/20 text-primary shadow-[0_0_18px_hsl(270_60%_58%/0.45)]"
+                    : "group-hover:bg-black/15"
+                }`}
+              >
+                <Icon className="w-4 h-4 flex-shrink-0" />
+              </span>
+              <span
+                className={`text-xs tracking-[0.18em] uppercase whitespace-nowrap overflow-hidden transition-[max-width,opacity,transform] duration-350 ease-out ${
+                  expanded
+                    ? "max-w-[9rem] opacity-100 translate-x-0"
+                    : "max-w-0 opacity-0 -translate-x-1"
+                }`}
+              >
+                {label}
+              </span>
+            </a>
+          );
+        })}
       </nav>
     </aside>
   );

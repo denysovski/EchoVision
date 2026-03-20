@@ -55,36 +55,18 @@ const HeroSection = () => {
           <span className="relative z-10">Introducing the Nova Pro X</span>
         </div>
 
-        <div className="overflow-visible pb-5 md:pb-6 mb-1 max-w-5xl w-full relative z-10">
-          <h1 className="leading-[1.01] md:leading-[0.99] tracking-[-0.02em]">
+        <div className="overflow-visible pb-7 md:pb-8 mb-1 max-w-5xl w-full relative z-10">
+          <h1 className="leading-[1.06] md:leading-[1.03] tracking-[-0.02em]">
             <span className="hero-word-sound hero-word block text-[5rem] md:text-[8rem] lg:text-[11rem] font-normal text-gradient-sharp" style={{ fontFamily: '"Special Gothic Expanded One", sans-serif', fontWeight: 400 }}>
               Sound
             </span>
-            <span className="hero-word-beyond hero-word block -mt-2 md:-mt-3 lg:-mt-4 text-[5rem] md:text-[8rem] lg:text-[11rem] font-normal text-gradient-purple" style={{ fontFamily: '"Special Gothic Expanded One", sans-serif', fontWeight: 400 }}>
+            <span className="hero-word-beyond hero-word block -mt-1 md:-mt-2 lg:-mt-3 text-[5rem] md:text-[8rem] lg:text-[11rem] font-normal text-gradient-purple" style={{ fontFamily: '"Special Gothic Expanded One", sans-serif', fontWeight: 400 }}>
               Beyond
             </span>
           </h1>
         </div>
 
-        <div className="hero-scroll-indicator relative z-20 mt-1 mb-2 flex flex-col items-center gap-2 pointer-events-none">
-          <span className="text-[10px] tracking-[0.28em] uppercase text-muted-foreground/70">
-            Scroll
-          </span>
-          <div className="mt-1 flex flex-col items-center gap-2.5">
-            {[0, 1, 2].map((index) => (
-              <span
-                key={index}
-                className="h-4 w-4 rotate-45 border-r-2 border-b-2 border-muted-foreground/80"
-                style={{
-                  animation: "scroll-arrow-loop 1.8s ease-in-out infinite",
-                  animationDelay: `${index * 0.28}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        <p className="hero-sub text-secondary-foreground/72 text-base md:text-lg max-w-[22rem] leading-relaxed font-light mt-2 relative z-20 text-center lg:text-right lg:self-end lg:pr-10">
+        <p className="hero-sub text-secondary-foreground/72 text-base md:text-lg max-w-[22rem] leading-relaxed font-light mt-2 relative z-20 text-center lg:text-right lg:self-end lg:pr-10 lg:-mt-10">
           50mm planar magnetic drivers. Engineered for those who refuse to compromise.
         </p>
 
@@ -105,7 +87,7 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <div className="relative z-50 flex justify-center lg:justify-end gap-3 mt-5 flex-wrap max-w-[26rem] lg:self-end lg:pr-10">
+        <div className="relative z-50 flex justify-center lg:justify-end gap-3 mt-4 lg:-mt-6 flex-wrap max-w-[26rem] lg:self-end lg:pr-10">
           {[
             ["72h", "Battery"],
             ["50mm", "Planar"],
@@ -120,6 +102,16 @@ const HeroSection = () => {
         </div>
 
       </div>
+
+      <a
+        href="#philosophy"
+        className="hero-scroll-indicator group absolute bottom-6 left-1/2 z-30 -translate-x-1/2 inline-flex flex-col items-center gap-2 text-muted-foreground/70 hover:text-foreground transition-colors duration-250"
+      >
+        <span className="relative flex h-9 w-5 items-start justify-center rounded-full border border-current/70 group-hover:border-current">
+          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-current animate-[mouse-wheel_1.6s_ease-in-out_infinite]" />
+        </span>
+        <span className="text-[10px] tracking-[0.28em] uppercase">Scroll</span>
+      </a>
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent pointer-events-none" />
