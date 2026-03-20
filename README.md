@@ -87,3 +87,9 @@ The page is organized into reusable narrative modules that scale as the product 
 GitHub Pages:
 
 - https://denysovski.github.io/EchoVision/
+
+## Preview
+
+![Nova Pro X Landing Page Preview](screencapture-denysovski-github-io-EchoVision-2026-03-20-11_29_22.png)
+
+Full interaction demo video included: `Video Project 2.mp4`
