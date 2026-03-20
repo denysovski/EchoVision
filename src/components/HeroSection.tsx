@@ -87,7 +87,7 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <div className="relative z-50 flex justify-center lg:justify-end gap-3 mt-4 lg:-mt-6 flex-wrap max-w-[26rem] lg:self-end lg:pr-10">
+        <div className="relative z-50 flex justify-center lg:justify-end gap-3 mt-4 lg:mt-10 flex-wrap max-w-[26rem] lg:self-end lg:pr-10">
           {[
             ["72h", "Battery"],
             ["50mm", "Planar"],
@@ -105,7 +105,7 @@ const HeroSection = () => {
 
       <a
         href="#philosophy"
-        className="hero-scroll-indicator group absolute bottom-6 left-1/2 z-30 -translate-x-1/2 inline-flex flex-col items-center gap-2 text-muted-foreground/70 hover:text-foreground transition-colors duration-250"
+        className="hero-scroll-indicator group absolute bottom-[56px] left-1/2 z-30 -translate-x-1/2 inline-flex flex-col items-center gap-2 text-muted-foreground/70 hover:text-foreground transition-colors duration-250"
       >
         <span className="relative flex h-9 w-5 items-start justify-center rounded-full border border-current/70 group-hover:border-current">
           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-current animate-[mouse-wheel_1.6s_ease-in-out_infinite]" />
