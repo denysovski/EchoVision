@@ -89,12 +89,12 @@ const HeroSection = () => {
         </p>
 
         <div className="pointer-events-none relative z-40 mt-10 w-full max-w-4xl lg:absolute lg:left-[-22rem] lg:top-[-6rem] lg:mt-0 lg:w-[min(92vw,84rem)] xl:left-[-16rem] 2xl:left-[-12rem]">
-          <div className="absolute inset-[10%_14%_16%_12%] rounded-full bg-[radial-gradient(circle,rgba(148,88,255,0.52),rgba(67,30,118,0.24)_38%,rgba(12,10,16,0)_74%)] blur-[90px]" />
-          <div className="absolute inset-[20%_20%_26%_18%] rounded-full bg-[radial-gradient(circle,rgba(168,110,255,0.42),rgba(12,10,16,0)_70%)] blur-[120px]" />
+          <div className="absolute inset-[10%_14%_16%_12%] rounded-full bg-[radial-gradient(circle,rgba(148,88,255,0.26),rgba(67,30,118,0.12)_38%,rgba(12,10,16,0)_74%)] blur-[90px]" />
+          <div className="absolute inset-[20%_20%_26%_18%] rounded-full bg-[radial-gradient(circle,rgba(168,110,255,0.21),rgba(12,10,16,0)_70%)] blur-[120px]" />
           <img
             src={heroImg}
             alt="Nova Pro X premium headphones"
-            className="hero-img relative w-full object-contain drop-shadow-[0_54px_138px_rgba(0,0,0,0.85)] [filter:drop-shadow(0_0_40px_rgba(157,96,255,0.46))_drop-shadow(0_0_96px_rgba(121,60,223,0.36))]"
+            className="hero-img relative w-full object-contain drop-shadow-[0_54px_138px_rgba(0,0,0,0.85)] [filter:drop-shadow(0_0_40px_rgba(157,96,255,0.23))_drop-shadow(0_0_96px_rgba(121,60,223,0.18))]"
           />
         </div>
 
