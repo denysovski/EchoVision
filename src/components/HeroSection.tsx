@@ -2,19 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import heroImg from "../../headphones.png";
 
-declare global {
-  interface Window {
-    WebFont?: any;
-  }
-}
-
-if (typeof window !== "undefined" && !document.querySelector('link[href*="Space Grotesk"]')) {
-  const link = document.createElement("link");
-  link.href = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap";
-  link.rel = "stylesheet";
-  document.head.appendChild(link);
-}
-
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -25,9 +12,10 @@ const HeroSection = () => {
       tl.from(".hero-eyebrow", { opacity: 0, y: 16, duration: 0.45, ease: "power2.out" })
         .from(".hero-word-sound", { opacity: 0, y: 70, skewY: 3, duration: 0.45, ease: "power4.out" }, "-=0.18")
         .from(".hero-word-beyond", { opacity: 0, y: 58, skewY: 2, duration: 0.32, ease: "power4.out" }, "-=0.22")
+        .from(".hero-scroll-indicator", { opacity: 0, y: 12, duration: 0.32, ease: "power2.out" }, "-=0.05")
         .from(".hero-sub", { opacity: 0, y: 24, duration: 0.45, ease: "power2.out" }, "-=0.08")
-        .from(".hero-cta > *", { opacity: 0, y: 18, duration: 0.45, stagger: 0.07, ease: "power2.out" }, "-=0.15")
         .from(".hero-stat", { opacity: 0, y: 16, duration: 0.4, stagger: 0.06, ease: "power2.out" }, "-=0.1")
+        .from(".hero-note", { opacity: 0, y: 18, duration: 0.45, ease: "power2.out" }, "-=0.08")
         .from(".hero-img", { opacity: 0, y: 86, scale: 0.88, duration: 1.05, ease: "power3.out" }, "+=0.35");
 
       // Image stays static, no float
@@ -51,7 +39,7 @@ const HeroSection = () => {
     <section
       id="top"
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden px-6 pt-24 pb-16 lg:pt-28"
+      className="relative min-h-screen overflow-x-hidden px-6 pt-24 pb-16 lg:pt-28"
     >
       {/* Background orbs */}
       <div className="orb-1 absolute top-1/4 left-1/3 w-[700px] h-[700px] rounded-full bg-purple-700/[0.12] blur-[130px] pointer-events-none" />
@@ -67,47 +55,57 @@ const HeroSection = () => {
           <span className="relative z-10">Introducing the Nova Pro X</span>
         </div>
 
-        <div className="overflow-hidden mb-3 max-w-5xl relative z-10">
-          <h1 className="leading-[0.9] tracking-[-0.02em]">
-            <span className="hero-word-sound hero-word block text-[5rem] md:text-[8rem] lg:text-[11rem] font-black text-gradient-sharp" style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif', fontWeight: 900 }}>
+        <div className="overflow-visible pb-5 md:pb-6 mb-1 max-w-5xl w-full relative z-10">
+          <h1 className="leading-[1.01] md:leading-[0.99] tracking-[-0.02em]">
+            <span className="hero-word-sound hero-word block text-[5rem] md:text-[8rem] lg:text-[11rem] font-normal text-gradient-sharp" style={{ fontFamily: '"Special Gothic Expanded One", sans-serif', fontWeight: 400 }}>
               Sound
             </span>
-            <span className="hero-word-beyond hero-word block text-[5rem] md:text-[8rem] lg:text-[11rem] font-black text-gradient-purple" style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif', fontWeight: 900 }}>
+            <span className="hero-word-beyond hero-word block -mt-2 md:-mt-3 lg:-mt-4 text-[5rem] md:text-[8rem] lg:text-[11rem] font-normal text-gradient-purple" style={{ fontFamily: '"Special Gothic Expanded One", sans-serif', fontWeight: 400 }}>
               Beyond
             </span>
           </h1>
         </div>
 
-        <p className="hero-sub text-secondary-foreground/72 text-base md:text-lg max-w-lg mx-auto leading-relaxed font-light mt-5 relative z-10">
+        <div className="hero-scroll-indicator relative z-20 mt-1 mb-2 flex flex-col items-center gap-2 pointer-events-none">
+          <span className="text-[10px] tracking-[0.28em] uppercase text-muted-foreground/70">
+            Scroll
+          </span>
+          <div className="mt-1 flex flex-col items-center gap-2.5">
+            {[0, 1, 2].map((index) => (
+              <span
+                key={index}
+                className="h-4 w-4 rotate-45 border-r-2 border-b-2 border-muted-foreground/80"
+                style={{
+                  animation: "scroll-arrow-loop 1.8s ease-in-out infinite",
+                  animationDelay: `${index * 0.28}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <p className="hero-sub text-secondary-foreground/72 text-base md:text-lg max-w-[22rem] leading-relaxed font-light mt-2 relative z-20 text-center lg:text-right lg:self-end lg:pr-10">
           50mm planar magnetic drivers. Engineered for those who refuse to compromise.
         </p>
 
-        <div className="hero-cta relative z-30 flex justify-center gap-4 mt-9 flex-wrap">
-          <a
-            href="#order"
-            className="relative overflow-hidden group bg-primary text-primary-foreground px-10 py-4 text-sm font-display font-semibold tracking-[0.1em] uppercase rounded-full transition-all duration-300 hover:shadow-[0_0_40px_hsl(270_60%_58%/0.55)]"
-          >
-            <span className="relative z-10">Pre-Order — $449</span>
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
-          <a
-            href="#features"
-            className="px-10 py-4 text-sm font-display font-medium tracking-[0.1em] uppercase rounded-full border border-border/50 text-foreground hover:bg-white/[0.05] hover:border-primary/40 transition-all duration-300"
-          >
-            Explore
-          </a>
-        </div>
-
-        <div className="pointer-events-none relative z-40 mt-10 w-full max-w-4xl lg:absolute lg:left-[-16rem] lg:top-[4%] lg:mt-0 lg:w-[min(92vw,84rem)] xl:left-[-10rem] 2xl:left-[-6rem]">
-          <div className="absolute inset-[14%_18%_20%_16%] rounded-full bg-[radial-gradient(circle,rgba(138,75,255,0.36),rgba(12,10,16,0)_72%)] blur-3xl" />
+        <div className="pointer-events-none relative z-40 mt-10 w-full max-w-4xl lg:absolute lg:left-[-22rem] lg:top-[-6rem] lg:mt-0 lg:w-[min(92vw,84rem)] xl:left-[-16rem] 2xl:left-[-12rem]">
+          <div className="absolute inset-[10%_14%_16%_12%] rounded-full bg-[radial-gradient(circle,rgba(148,88,255,0.52),rgba(67,30,118,0.24)_38%,rgba(12,10,16,0)_74%)] blur-[90px]" />
+          <div className="absolute inset-[20%_20%_26%_18%] rounded-full bg-[radial-gradient(circle,rgba(168,110,255,0.42),rgba(12,10,16,0)_70%)] blur-[120px]" />
           <img
             src={heroImg}
             alt="Nova Pro X premium headphones"
-            className="hero-img relative w-full object-contain drop-shadow-[0_50px_140px_rgba(0,0,0,0.88)]"
+            className="hero-img relative w-full object-contain drop-shadow-[0_54px_138px_rgba(0,0,0,0.85)] [filter:drop-shadow(0_0_40px_rgba(157,96,255,0.46))_drop-shadow(0_0_96px_rgba(121,60,223,0.36))]"
           />
         </div>
 
-        <div className="relative z-50 flex justify-center gap-4 mt-10 lg:mt-[26rem] flex-wrap">
+        <div className="hero-note relative z-50 mt-5 max-w-xs text-center lg:absolute lg:left-10 lg:bottom-12 lg:mt-0 lg:text-left">
+          <p className="text-[10px] tracking-[0.26em] uppercase text-muted-foreground/70 mb-2">Design Language</p>
+          <p className="text-xs md:text-sm leading-relaxed text-secondary-foreground/78">
+            Minimalistic, but professional. Built with restraint, engineered with precision.
+          </p>
+        </div>
+
+        <div className="relative z-50 flex justify-center lg:justify-end gap-3 mt-5 flex-wrap max-w-[26rem] lg:self-end lg:pr-10">
           {[
             ["72h", "Battery"],
             ["50mm", "Planar"],
@@ -120,6 +118,7 @@ const HeroSection = () => {
             </div>
           ))}
         </div>
+
       </div>
 
       {/* Bottom fade */}

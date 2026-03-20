@@ -84,18 +84,6 @@ The page is organized into reusable narrative modules that scale as the product 
 
 ## Live Preview
 
-```bash
-npm install
-npm run dev
-```
+GitHub Pages:
 
-Local preview:
-
-- http://localhost:8080
-
-Production build:
-
-```bash
-npm run build
-npm run preview
-```
+- https://denysovski.github.io/EchoVision/

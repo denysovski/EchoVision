@@ -54,16 +54,6 @@ const TechSpecs = () => {
             ease: "power2.out",
           },
           "-=0.25"
-        )
-        .from(
-          ".specs-cta",
-          {
-            opacity: 0,
-            y: 20,
-            duration: 0.55,
-            ease: "power2.out",
-          },
-          "-=0.25"
         );
     }, ref);
     return () => ctx.revert();
@@ -94,16 +84,6 @@ const TechSpecs = () => {
         ))}
       </div>
 
-      {/* CTA Button */}
-      <div className="specs-cta flex justify-center mt-16">
-        <a
-          href="#order"
-          className="relative overflow-hidden group px-8 py-3.5 text-sm font-display font-semibold tracking-[0.1em] uppercase rounded-full border border-primary/60 text-foreground hover:text-primary-foreground hover:bg-primary transition-all duration-300"
-        >
-          <span className="relative z-10">Pre-Order Now</span>
-          <span className="absolute inset-0 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-        </a>
-      </div>
     </section>
   );
 };

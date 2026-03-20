@@ -29,11 +29,19 @@ const Sidebar = () => {
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
       className={`hidden lg:flex fixed left-0 top-1/2 -translate-y-1/2 z-40 h-fit flex-col border border-sidebar-border bg-sidebar/95 backdrop-blur-xl transition-[width,box-shadow] duration-500 rounded-r-2xl overflow-hidden py-6 px-2 ${
-        expanded ? "w-56" : "w-16"
+        expanded
+          ? "w-56 shadow-[0_0_55px_hsl(270_60%_58%/0.32),0_20px_50px_-28px_rgba(0,0,0,0.95)]"
+          : "w-16 shadow-none"
       }`}
       style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
     >
-      <nav className="flex flex-col w-full">
+      <div
+        className={`pointer-events-none absolute inset-0 rounded-r-2xl transition-opacity duration-400 ${
+          expanded ? "opacity-100" : "opacity-0"
+        } bg-[radial-gradient(circle_at_left,rgba(149,85,255,0.28),rgba(149,85,255,0)_62%)]`}
+      />
+
+      <nav className="relative z-10 flex flex-col w-full">
         {sections.map(({ label, icon: Icon, href }) => (
           <a
             key={label}
